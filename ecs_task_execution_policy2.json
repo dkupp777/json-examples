@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetParameters",
+                "secretsmanager:GetSecretValue",
+                "kms:Decrypt"
+            ],
+            "Resource": [
+                "arn:aws:ssm:us-east-1:591601611851:parameter/dev/retool/*",
+                "arn:aws:secretsmanager:us-east-1:591601611851:secret:Retool*",
+                "arn:aws:kms:us-east-1:591601611851:key/7b8a91cc-61a4-4499-aa15-807e0e0e93df",
+                "arn:aws:kms:us-east-1:591601611851:key/b66a2941-f7e9-4058-96ef-07413bdca3a0"
+            ]
+        }
+    ]
+}
